@@ -72,7 +72,7 @@ def preprocess_code(code):
     comment_patterns = [r'@Override\s', r'@[A-Z]\w+\s', r'#pragma\s+\w+']
     comments = ' '.join(m.group() for p in comment_patterns for m in re.finditer(p, code))
     # Remove all comments
-    code = re.sub(r"//.*?\n|/\*.*?\*/|#[^\n]*", "", code, flags=re.DOTALL)
+    code = re.sub(r"//.*?\n|/\*.*?\*/", "", code, flags=re.DOTALL)
     # Add back relevant comments
     code = comments + ' ' + code if comments else code
     # Remove long non-code strings (e.g., JSON, XML)

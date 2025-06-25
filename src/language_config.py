@@ -23,7 +23,7 @@ LANGUAGE_CONFIG = {
     "C": {
         "keywords": [
             "#include <stdio.h>", "#include <stdlib.h>", "printf", "scanf",
-            "struct", "typedef", "int main(", "void main(", "getchar",
+            "struct", "typedef", "int main", "void main(", "getchar",
             "putchar", "#define"
         ],
         "patterns": [
@@ -85,7 +85,7 @@ LANGUAGE_CONFIG = {
 }
 
 # Common stop words across all languages
-STOP_WORDS = ["int", "void", "main", "string", "return", "if", "else", "for", "while"]
+STOP_WORDS = ["void", "string", "if", "else", "for", "while"]
 
 # Example of adding a new language:
 # LANGUAGE_CONFIG["Ruby"] = {
