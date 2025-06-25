@@ -40,7 +40,7 @@ LANGUAGE_KEYWORDS = {
         "putchar",
         "#define",
     ],
-    "C++": [
+    "Cpp": [
         "class",
         "public:",
         "private:",
@@ -58,6 +58,11 @@ LANGUAGE_KEYWORDS = {
         "string",
         "#include <vector>",
         "#include <string>",
+        "#include <iostream>",
+        "#include <algorithm>",
+        "#include <map>",
+        "#include <set>",
+        "#include <unordered_map>",
     ],
     "JavaScript": [
         "function",
@@ -121,10 +126,9 @@ LANGUAGE_KEYWORDS = {
         "defer",
         "go",
     ],
-    
 }
 
-# Stop words chung cho các ngôn ngữ
+# Common stop words to ignore in code snippets
 STOP_WORDS = ["int", "void", "main", "string", "return", "if", "else", "for", "while"]
 
 
