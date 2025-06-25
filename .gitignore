@@ -1,0 +1,7 @@
+*.sh
+data/sample_codes
+duck-env
+*.pkl
+.idea
+*.pyc
+.qodo
