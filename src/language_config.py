@@ -61,7 +61,9 @@ LANGUAGE_CONFIG = {
             "ReturnType<", "InstanceType<"
         ],
         "patterns": [
-            r":\s*(number|string|boolean)", r"interface\s+\w+\s*{"
+            r"\b\w+\s*:\s*(number|string|boolean|any|void|unknown|never|undefined|bigint|symbol|object)",
+            r"interface\s+\w+\s*{",
+            r"type\s+\w+\s*="
         ]
     },
     "Rust": {

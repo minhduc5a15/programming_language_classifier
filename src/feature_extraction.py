@@ -4,7 +4,8 @@ import re
 import numpy as np
 from src.language_config import LANGUAGE_CONFIG, STOP_WORDS
 
-def extract_features(codes, n_components=100):
+
+def extract_features(codes, n_components=200):
     """
     Extract features from code snippets using TF-IDF and custom features.
     Args:
@@ -27,8 +28,8 @@ def extract_features(codes, n_components=100):
     for config in LANGUAGE_CONFIG.values():
         vocabulary.update(config["keywords"])
     vectorizer = TfidfVectorizer(
-        max_features=25000,
-        ngram_range=(1, 7),
+        max_features=50000,
+        ngram_range=(1, 4),
         token_pattern=r"\b\w+(?:\.\w+)*\b|::|->|=>|[.;{}()#@-]|[*]{1,2}|&&|\||[<>=!]=|[-+*/%]=|~|\^|\|",
         stop_words=[w for w in STOP_WORDS if w.strip()],
         lowercase=False,  # Preserve case for keywords like True, None
@@ -60,6 +61,7 @@ def extract_features(codes, n_components=100):
 
     return X, vectorizer, svd
 
+
 def preprocess_code(code):
     """
     Preprocess code snippet: remove comments, normalize whitespace, retain key structures.
@@ -80,6 +82,7 @@ def preprocess_code(code):
     # Normalize whitespace
     code = re.sub(r"\s+", " ", code).strip()
     return code if code else " "  # Return single space if empty to avoid TfidfVectorizer error
+
 
 def extract_custom_features(code):
     """
@@ -105,7 +108,8 @@ def extract_custom_features(code):
     syntax_counts = [
         code.count("{"), code.count("}"), code.count(";"),
         code.count("("), code.count(")"), code.count("for"),
-        code.count("while"), code.count("if"), code.count("else")
+        code.count("while"), code.count("if"), code.count("else"),
+        code.count("::"), code.count("->"), code.count("=>"),
     ]
 
     # Calculate average variable name length
